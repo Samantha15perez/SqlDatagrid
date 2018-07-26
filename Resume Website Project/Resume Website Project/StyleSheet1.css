@@ -1,0 +1,44 @@
+﻿#grad {
+    background: linear-gradient(to bottom, #F9FBF2, #D7F9FF, #AFCBFF) no-repeat center fixed;
+    background-size: cover;
+    margin: 40px;
+    color: black;
+}
+
+h2 {
+    color: #2E3C75;
+    text-align: left;
+}
+h1 {
+    font: 15px verdana, sans-serif;
+    color: #5565B5;
+    text-align: center;
+
+}
+h4 {
+    font: 15px verdana, sans-serif;
+    font-size: smaller;
+    color: #2E3C75;
+    text-align: center;
+}
+h5 {
+    font: 15px verdana, sans-serif;
+    font-size: smaller;
+    color: #2E3C75;
+    text-align: center;
+    margin: 35px
+}
+b {
+    color: #4252A3;
+}
+i {
+    color: #8999E5;
+}
+a {
+    color: #8392DB;
+    font: 15px verdana, sans-serif;
+}
+img.Image1 {
+    vertical-align: middle;
+}
+
