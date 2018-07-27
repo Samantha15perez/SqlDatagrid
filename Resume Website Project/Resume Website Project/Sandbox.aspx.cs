@@ -16,10 +16,14 @@ namespace Resume_Website_Project
     {
         public string Username;
         public bool CreateAccount;
-     
+        string Passhash;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Panel4.Visible = false;
+            Panel5.Visible = false;
+
             if (Session["Username"] == null)
             {
                 Session["Username"] = "NotLoggedIn";
@@ -44,8 +48,17 @@ namespace Resume_Website_Project
                 Panel2.Visible = true;
                 Panel4.Visible = false;
             }
+            if (Session["UserName"].ToString() == "DEBUG")
+            {
+                Panel5.Visible = true;
+                Panel1.Visible = false;
+                Panel2.Visible = false;
+                Panel4.Visible = false;
+            }
 
-            
+
+
+
         }
 
 
@@ -210,11 +223,89 @@ namespace Resume_Website_Project
         }
 
 
-
-        protected void Button5_Click(object sender, EventArgs e)
+        protected void ButtonNoCreate_Click(object sender, EventArgs e)
         {
             Session["UserName"] = "NotLoggedIn";
             Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            
+            //calculate md5 hash from plaintext password
+            
+            SqlConnection cnn;
+            string connectionString = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            cnn = new SqlConnection(connectionString);
+            try
+            {
+                string InputValue = TextBox4.Text.ToString();
+                MD5 EncryptionHash = System.Security.Cryptography.MD5.Create();
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(InputValue);
+                byte[] hash = EncryptionHash.ComputeHash(inputBytes);
+
+                // step 2, convert byte array to hex string
+
+                StringBuilder sb = new StringBuilder();
+
+                for (int i = 0; i < hash.Length; i++)
+                {
+                    sb.Append(hash[i].ToString("X2"));
+                    
+                }
+
+                Passhash = sb.ToString();
+                //insert username & password into sql db
+
+
+                SqlConnection DefaultConn = new SqlConnection(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+                SqlCommand CreateNewAccount = new SqlCommand("CreateNewAccount", DefaultConn);
+                CreateNewAccount.CommandType = System.Data.CommandType.StoredProcedure;
+
+                SqlParameter UserName = new SqlParameter("@Username", TextBox3.Text);
+                SqlParameter UserPassword = new SqlParameter("@UserPassword", Passhash);
+
+
+                CreateNewAccount.Parameters.Add(UserName);
+                CreateNewAccount.Parameters.Add(UserPassword);
+
+
+                CreateNewAccount.Connection.Open();
+                CreateNewAccount.ExecuteNonQuery();
+                CreateNewAccount.Connection.Close();
+
+                
+                
+                
+
+
+            }
+            catch
+            {
+                Response.Write("Something went wrong. Please try again later.");
+            }
+
+            Session["UserName"] = "NotLoggedIn";
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+
+        }
+
+        protected void ButtonDEBUG_Click(object sender, EventArgs e)
+        {
+            Session["UserName"] = "DEBUG";
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+
+            Panel5.Visible = true;
+
+        }
+
+        //enter both username and password into data table
+
+
+        //have user log in
+
+
     }
+
 }

@@ -8,23 +8,16 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="StyleSheet1.css" rel="stylesheet" />
-    <style type="text/css">
-        .auto-style2 {
-            width: 50%;
-            height: 25px;
-        }
-        .auto-style3 {
-            height: 21px;
-        }
-        .auto-style4 {
-            height: 21px;
-            width: 169px;
-        }
-    </style>
-</head>
+    </head>
+
+      
 
 <body id="grad">
     
+
+        
+        <form id="form1" runat="server">
+
 
         
         <table align="center">
@@ -33,17 +26,25 @@
     <th><a href="AboutMe.aspx">About</a></th>
      <th><a href="Sandbox.aspx">Login</a></th>
       <th><a href="Calculator.aspx">Calculator</a></th>
+      <th><a href="GridView.aspx">GridView</a></th>
 
   </tr>
 </table>
         
+          
+
         <div>
+            
+
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                <font face="verdana" size="1" color="#f0f0f0"><h1>content</h1></font>
+                <font face="verdana" size="1" color="#f0f0f0"><h1>content
+                </h1></font>
             </asp:ContentPlaceHolder>
         </div>
         <table style="width:100%" align="center">
            <tr><th><font face="verdana" size="1" color="#5565B5">This webpage and its content were created by Samantha Perez</font></th></tr>
+   
+        </form>
    
 </body>
 </html>

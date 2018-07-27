@@ -2,11 +2,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <form id="form2" runat="server">
+    
         <br />
-        <asp:Panel ID="Panel1" runat="server" Height="214px" style="margin-top: 0px" Width="170px">
+        <asp:Panel ID="Panel1" runat="server" Height="238px" style="margin-top: 0px" Width="170px">
             <h1>Please, Log in.</h1>
-            <font size="2" face="verdana" align="left" color="#8999E5">Username:<br /><asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+            <font size="2" face="verdana" align="left" color="#8999E5">Username:<br /><asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" Height="16px" Width="120px"></asp:TextBox>
             <br />
             Password:</font> <font size="2" face="verdana" align="left" color="#8999E5">
             <br />
@@ -17,6 +17,8 @@
             <br />
             <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Dont have a Login?" />
             <br />
+            <br />
+            <asp:Button ID="ButtonDEBUG" runat="server" OnClick="ButtonDEBUG_Click" Text="DEBUG" />
             <br />
             </font>
         </asp:Panel>
@@ -41,13 +43,40 @@
             <asp:TextBox ID="TextBox4" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
             <br />
             <br />
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" style="height: 26px" Text="Create Account" />
-            <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Button" />
+            <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="Create Account" />
+            <asp:Button ID="ButtonNoCreate" runat="server" OnClick="ButtonNoCreate_Click" Text="No Thanks" />
+            <asp:Panel ID="Panel5" runat="server" BackColor="Red" Height="218px">
+                <font align="left" color="#8999E5" face="verdana" size="2">
+                <br />
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Width="271px">
+                    <Columns>
+                        <asp:CommandField ShowDeleteButton="True" />
+                        <asp:BoundField DataField="UserName" HeaderText="UserName" SortExpression="UserName" />
+                        <asp:BoundField DataField="Pass" HeaderText="Pass" SortExpression="Pass" />
+                    </Columns>
+                </asp:GridView>
+                </font>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SandboxLoginTestConnectionString %>" DeleteCommand="DELETE FROM [AdminLogin] WHERE [UserName] = @UserName" InsertCommand="INSERT INTO [AdminLogin] ([UserName], [Pass]) VALUES (@UserName, @Pass)" SelectCommand="SELECT * FROM [AdminLogin]" UpdateCommand="UPDATE [AdminLogin] SET [Pass] = @Pass WHERE [UserName] = @UserName">
+                    <DeleteParameters>
+                        <asp:Parameter Name="UserName" Type="String" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="UserName" Type="String" />
+                        <asp:Parameter Name="Pass" Type="String" />
+                    </InsertParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="Pass" Type="String" />
+                        <asp:Parameter Name="UserName" Type="String" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+            </asp:Panel>
+            <br />
+            <br />
             <br />
             </font>
         </asp:Panel>
 
-    </form>
+   
 </asp:Content>
 
  

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <form runat="server">
+    
         <div align="center">
     <asp:Panel ID="Panel1"  runat="server" BackColor="Silver" Height="128px" Width="355px" BorderWidth="10px" BorderColor="#999999">
         
@@ -19,5 +19,5 @@
         
     </asp:Panel>
             </div>
-    </form>
+   
 </asp:Content>
