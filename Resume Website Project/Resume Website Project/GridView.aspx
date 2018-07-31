@@ -31,10 +31,13 @@
         </UpdateParameters>
     </asp:SqlDataSource>
     <br />
-    <asp:TextBox ID="TextBoxName" runat="server" ForeColor="Silver" OnTextChanged="TextBoxName_TextChanged">Name</asp:TextBox>
-    <asp:TextBox ID="TextBoxAddress" runat="server" ForeColor="Silver">Address</asp:TextBox>
-    <asp:TextBox ID="TextBoxPhone" runat="server" ForeColor="Silver">Phone</asp:TextBox>
-    <asp:TextBox ID="TextBoxEmail" runat="server" ForeColor="Silver">Email</asp:TextBox>
-    <asp:Button ID="ButtonAddRow" runat="server" Height="22px" OnClick="ButtonAddRow_Click" style="margin-top: 13px" Text="Add Row" Width="109px" />
-
+    
+    <asp:Panel ID="PanelInput" align="Center" runat="server" Height="47px" Width="100%" HorizontalAlign="Center">
+        <asp:Button ID="ButtonAddRow" runat="server" align="Center" Height="22px" OnClick="ButtonAddRow_Click" style="margin-top: 13px" Text="Add Row" Width="109px" />
+        <asp:TextBox ID="TextBoxName" runat="server" align="Center" ForeColor="Silver" OnTextChanged="TextBoxName_TextChanged">Name</asp:TextBox>
+        <asp:TextBox ID="TextBoxAddress" runat="server" align="Center" ForeColor="Silver">Address</asp:TextBox>
+        <asp:TextBox ID="TextBoxPhone" runat="server" align="Center" ForeColor="Silver">Phone</asp:TextBox>
+        <asp:TextBox ID="TextBoxEmail" runat="server" align="Center" ForeColor="Silver">Email</asp:TextBox>
+    </asp:Panel>
+    
 </asp:Content>
