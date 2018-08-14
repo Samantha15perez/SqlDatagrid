@@ -22,7 +22,7 @@ namespace Resume_Website_Project
         protected void Page_Load(object sender, EventArgs e)
         {
             Panel4.Visible = false;
-            Panel5.Visible = false;
+
 
             if (Session["Username"] == null)
             {
@@ -50,7 +50,7 @@ namespace Resume_Website_Project
             }
             if (Session["UserName"].ToString() == "DEBUG")
             {
-                Panel5.Visible = true;
+
                 Panel1.Visible = false;
                 Panel2.Visible = false;
                 Panel4.Visible = false;
@@ -296,7 +296,6 @@ namespace Resume_Website_Project
             Session["UserName"] = "DEBUG";
             Page.Response.Redirect(Page.Request.Url.ToString(), true);
 
-            Panel5.Visible = true;
 
         }
 
